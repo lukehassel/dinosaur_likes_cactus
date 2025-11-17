@@ -7,12 +7,10 @@ import CoreData
 // Run with swift dinosaur_entity.swift
 
 func createDinosaurEntity() ->NSEntityDescription{
-    // 1. Create the empty entity blueprint and name it "Dinosaur"
     let dinosaurEntity = NSEntityDescription()
     dinosaurEntity.name = "Dinosaur"
     dinosaurEntity.managedObjectClassName = "Dinosaur" // The name of the Swift class
 
-    // 2. Define its attributes (the columns)
     let nameAttr = NSAttributeDescription()
     nameAttr.name = "name"
     nameAttr.attributeType = .stringAttributeType
@@ -66,7 +64,6 @@ func createTorchEntity()->NSEntityDescription {
     return torchEntity
 }
 
-// Helper function to set up relationships between entities
 func setupRelationships(dinosaurEntity: NSEntityDescription, torchEntity: NSEntityDescription) {
     let dinosaurToTorch = NSRelationshipDescription()
     dinosaurToTorch.name = "torches"
@@ -90,18 +87,11 @@ func setupRelationships(dinosaurEntity: NSEntityDescription, torchEntity: NSEnti
     torchEntity.properties.append(torchToDinosaur)
 }
 
-func relation() {
-    let dinosaurEntity = createDinosaurEntity()
-    let torchEntity = createTorchEntity()
-    setupRelationships(dinosaurEntity: dinosaurEntity, torchEntity: torchEntity)
-}
-
 func main() {
 
     let dinosaurEntity = createDinosaurEntity()
     let torchEntity = createTorchEntity()
 
-    // Set up relationships between entities (REUSE!)
     setupRelationships(dinosaurEntity: dinosaurEntity, torchEntity: torchEntity)
 
     // Create the Managed Object Model
@@ -190,5 +180,8 @@ func main() {
 
 }
 
+// ============================================================================
+// Auto-execute when file is run
+// ============================================================================
 main()
 
